@@ -1,0 +1,58 @@
+{
+  "name": "Shrenik Jain",
+  "roll_no": "24b2302",
+  "seed": 42,
+  "gpu_used": "NVIDIA GeForce RTX 3050 Laptop GPU (4GB)",
+  "task1": {
+    "bm25_settings": "rank_bm25 BM25Okapi k1=2.1 b=0.75 title_boost=3 porter_stem=True, stopwords removed",
+    "val_ndcg10": 0.8709625321971165
+  },
+  "task2": {
+    "general_model": "BAAI/bge-large-en-v1.5 (335M) with query instruction",
+    "scientific_model": "ncbi/MedCPT Article+Query encoders",
+    "val_ndcg10_general": 0.9327816176022496,
+    "val_ndcg10_scientific": 0.8477537292385062,
+    "index_time_sec": {
+      "general": 168.49,
+      "scientific": 32.49
+    },
+    "query_latency_ms": {
+      "general": 2.93,
+      "scientific": 1.0
+    },
+    "memory_mb": {
+      "general": 20.25,
+      "scientific": 15.18
+    }
+  },
+  "task3": {
+    "hybrid_method": "weighted RRF (c=60) of bm25=0.05, general=0.8, medcpt=0.15",
+    "reranker_model": "Alibaba-NLP/gte-reranker-modernbert-base fine-tuned on train claims (listwise, hard negs; first stage: hybrid)",
+    "rerank_top_k": 20,
+    "val_ndcg10_hybrid": 0.9373134569672557,
+    "val_ndcg10_rerank": 0.9606591903228757,
+    "rerank_query_latency_ms": 418.3393778624358,
+    "hybrid_fusion_latency_ms": 0.097
+  },
+  "task4": {
+    "base_model": "BAAI/bge-large-en-v1.5 + LoRA (r=16), InfoNCE, bs=16, lr=0.0001, <=5 epochs, best val epoch kept",
+    "val_ndcg10_random_negatives": 0.9054797688761977,
+    "val_ndcg10_hard_negatives": 0.9203668525117402
+  },
+  "task5": {
+    "retriever_used": "rerank_ft (val nDCG@10 0.9607)",
+    "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+    "zero_shot_or_finetuned": "fine-tuned on train claims",
+    "val_f1": 0.7574468085106383
+  },
+  "report_q1": {
+    "bm25_wins": [
+      673,
+      155
+    ],
+    "general_wins": [
+      463,
+      766
+    ]
+  }
+}
