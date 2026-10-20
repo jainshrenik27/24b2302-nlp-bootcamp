@@ -1,9 +1,5 @@
 # Inter-IIT Tech Meet 15.0 - Selection Bootcamp (NLP)
 
-**Student Name:** Shrenik Jain  
-**Roll Number:** 24b2302  
-**Problem Statement:** Finding Evidence for Scientific Claims (SciFact)
-
 ---
 
 ## 📌 Overview
